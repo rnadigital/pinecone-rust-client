@@ -152,6 +152,9 @@ pub enum PineconeError {
     },
 }
 
+unsafe impl Send for PineconeError {}
+unsafe impl Sync for PineconeError {}
+
 // Implement the conversion from OpenApiError to PineconeError for CreateIndexError.
 impl<T> From<OpenApiError<T>> for PineconeError {
     fn from(error: OpenApiError<T>) -> Self {
